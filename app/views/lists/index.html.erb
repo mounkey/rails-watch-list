@@ -1,11 +1,16 @@
-<div class="container">
-  <h1>List </h1>
+
+  <h1>List of Movie</h1>
+ 
+</div>
   <ul>
     <% @lists.each do |list| %>
       <li>
-        <%= link_to list.name, list_path(list)  %> 
+        
+          <%= link_to list.name, list_path(list) %>
+        </div>>
       </li>
     <% end %>
-  </ul>
-</div>
+</ul> 
+
+
 
