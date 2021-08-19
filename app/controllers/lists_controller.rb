@@ -3,17 +3,24 @@ class ListsController < ApplicationController
     @lists = List.all
   end
 
-  def new
-    @list = List.new(list_params)
-  end
-  def create
-    @list = List.new(list_params)
-    @restaurant.save
-  end
-
   def show
     @list = List.find(params[:id])
-    
+    @bookmark = Bookmark.new
+  end
+
+  def new
+    @list = List.new
+  end
+
+  def create
+    @list = List.new(list_params)
+    @list.save
+    redirect_to list_path(@list)
+  end
+
+  def bookmarks
+    @list = List.find(params[:id])
+    @list.bookmarks
   end
 
   private
