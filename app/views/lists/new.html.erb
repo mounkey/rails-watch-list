@@ -1,4 +1,24 @@
-<%= simple_form_for (@list) do |f| %>
-  <%= f.input :name %>
-  <%= f.submit "Submit review", class: "btn btn-primary" %>
-<% end %>
+<div class ="row">
+<div class = "col-sm-12 col-md-12 col-lg-6 ">
+  <h2>Add New List</h2>
+  <%= simple_form_for (@list) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :imagen,:input_html => { :value => "descarga.jpg"} %>
+    <%= f.submit "Submit review", class: "btn btn-primary" %>
+  <% end %>
+</div>
+<div class = "col-sm-12 col-md-12 col-lg-6 ">
+  <h2> You List </h2>
+  <div class= "new_list" >
+    <% @list1.each do |l|%>
+      <div>
+        <%= l.name %> 
+      </div>
+      <div class="text-right" style="font-size: 10px">
+        <%= link_to  "Show", list_path(l)  %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+</div>

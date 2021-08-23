@@ -1,21 +1,42 @@
-<h2><%= @list.name %></h2>
-
-<ul>
+<div class = "text-right">
+  <%= link_to  "Add new movie", new_list_bookmark_path(@list.id), class: "btn btn-primary" %>
+</div>
+<h1> List of Movie </h1>
+<div class = "row">
   <% @list.movies.each do |movie| %>
-    <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
-    <li>
-      <%= movie.title %>
-      <br/>
-      <%= bookmark.comment %>
-      <%= link_to "Delete bookmark", bookmark_path(bookmark), method: :delete %>
-    </li>
+  <% bookmark = Bookmark.find_by(list: @list, movie: movie) %> 
+<div class= "col-sm-12 col-md-12 col-lg-6 col-xl-6">
+ <div class="card-product">
+    <%= image_tag( bookmark.movie.poster_url, class: "img") %>
+   <div class="card-product-infos">
+      <div class="row">
+        <div class= "col-sm-10 col-lg-10">
+          <br/>
+            <h2><%= bookmark.list.name %></h2><br/>
+            
+        </div>
+        <div class= "col-sm-2 col-lg-2 rigth-center btn_list" >
+        <br/>
+          <small><%= "Score: #{bookmark.movie.rating}" %></small>
+        </div>
+      </div>
+    </div>
+    <div class = "card-text">
+        <p><%= bookmark.movie.overview%></p>  
+    </div>
+    <ul>
+        <li>
+          <%= movie.title %>
+          <br/>
+          <%= bookmark.comment %>
+          <%= link_to "Delete bookmark", bookmark_path(bookmark), method: :delete %>
+        </li>
+    </ul>
   <% end %>
-</ul>
+</div>
+</div>
 
-<%= simple_form_for [@list, @bookmark]  do |f| %>
-<%= f.input :comment %>
-<%= f.association :movie %>
-<%= f.submit "Submit review", class: "btn btn-primary" %>
-<% end %>
 
-<%= link_to("Volver", lists_path) %>
+
+
+

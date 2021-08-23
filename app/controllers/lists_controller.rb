@@ -5,17 +5,18 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
-    @bookmark = Bookmark.new
+    @bookmarks = Bookmark.new
   end
 
   def new
+    @list1 = List.all
     @list = List.new
   end
 
   def create
     @list = List.new(list_params)
     @list.save
-    redirect_to list_path(@list)
+    redirect_to root_path
   end
 
   def bookmarks
@@ -26,6 +27,6 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :imagen)
   end
 end

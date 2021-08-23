@@ -1,16 +1,12 @@
-
-  <h1>List of Movie</h1>
- 
+<div class="text-right">
+  <%= link_to  "Add New List", new_list_path, class:"btn btn-primary btn_add" %>
 </div>
-  <ul>
-    <% @lists.each do |list| %>
-      <li>
-        
-          <%= link_to list.name, list_path(list) %>
-        </div>>
-      </li>
-    <% end %>
-</ul> 
-
-
+<div class="row">
+  <% @lists.each do |l|%>
+  <div class = " col-sm-12 col-md-6 col-lg-4">
+     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_url(l.imagen) %>')">
+      <%= link_to l.name, list_path(l), class: "link"%>
+    </div>
+</div>
+<% end %>
 

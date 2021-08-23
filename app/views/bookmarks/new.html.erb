@@ -1,0 +1,27 @@
+<div>
+  <h2><%= "The list: #{@list.name}"%></h2>
+</div>
+<div class = "row">
+  <div class = "col-sm-12 col-md-12 col-lg-6">
+    <%= simple_form_for [@list, @bookmark]  do |f| %>
+    <%= f.input :comment %>
+    <%= f.association :movie %>
+    <%= f.submit "Submit review", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <div class = "col-sm-12 col-md-12 col-lg-6">
+    <% @book.each do |b|  %>
+      <ul>
+        <li>
+        <%= b.movie.title%>
+        <br/>
+        <%= b.comment%>
+        <%= link_to "delete bookmark", bookmark_path(b), method: :delete %>
+        </li>
+      </ul>
+      <% end %>
+  </div>
+</div>
+
+<%= link_to("Volver", lists_path) %>
+
