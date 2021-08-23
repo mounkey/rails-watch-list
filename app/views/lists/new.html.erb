@@ -3,7 +3,7 @@
   <h2>Add New List</h2>
   <%= simple_form_for (@list) do |f| %>
     <%= f.input :name %>
-    <%= f.input :imagen,:input_html => { :value => "descarga.jpg"} %>
+    <%= f.input :photo, as: :file %>
     <%= f.submit "Submit review", class: "btn btn-primary" %>
   <% end %>
 </div>

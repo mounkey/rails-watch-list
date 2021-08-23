@@ -6,7 +6,7 @@
   <% @list.movies.each do |movie| %>
   <% bookmark = Bookmark.find_by(list: @list, movie: movie) %> 
 <div class= "col-sm-12 col-md-12 col-lg-6 col-xl-6">
- <div class="card-product">
+  <div class="card-product">   
     <%= image_tag( bookmark.movie.poster_url, class: "img") %>
    <div class="card-product-infos">
       <div class="row">
@@ -24,17 +24,23 @@
     <div class = "card-text">
         <p><%= bookmark.movie.overview%></p>  
     </div>
-    <ul>
-        <li>
-          <%= movie.title %>
-          <br/>
-          <%= bookmark.comment %>
-          <%= link_to "Delete bookmark", bookmark_path(bookmark), method: :delete %>
-        </li>
-    </ul>
-  <% end %>
+    <div>
+      <ul>
+          <li>
+            <%= movie.title %>
+            <br/>
+            <%= bookmark.comment %>
+            <%= link_to "Delete bookmark", bookmark_path(bookmark), method: :delete %>
+          </li>
+      </ul>
+    </div>
+  </div>
 </div>
-</div>
+<% end %>
+
+
+
+
 
 
 
